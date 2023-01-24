@@ -1,0 +1,46 @@
+ul, li {
+    margin: 0;
+    padding: 0;
+}
+li {
+    list-style: none;
+}
+.box {
+    display: table;
+    margin: 100px auto 0;
+}
+.box__box {
+    display: flex;
+}
+.box__el {
+    position: relative;
+    border: 1px black solid;
+    width: 150px;
+    height: 150px;
+}
+.cross {
+    position: fixed;
+    z-index: 0;
+    fill: transparent;
+    pointer-events: none;
+
+    width: 150px;
+    height: 150px;
+}
+.circle {
+    position: fixed;
+    z-index: 0;
+    fill: transparent;
+    pointer-events: none;
+
+    width: 150px;
+    height: 150px;
+}
+.cross--visible {
+    z-index: 10;
+    fill: green;
+}
+.circle--visible {
+    z-index: 10;
+    fill: red;
+}
