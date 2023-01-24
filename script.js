@@ -1,19 +1,18 @@
 const box = document.querySelector('.box');
+const boxEl = document.querySelectorAll('.box__el')
+const crossWins = document.querySelector('.crossWinsAmount')
+const circleWins = document.querySelector('.circleWinsAmount')
+const btnReset = document.querySelector('.btnReset')
+
+console.log(boxEl)
+
 let move = 1;
+let crossWinsAmount = 0;
+let circleWinsAmount = 0;
 
-const firstEl = document.querySelector('[data-number="first"]')
-const secondEl = document.querySelector('[data-number="second"]')
-const thirdEl = document.querySelector('[data-number="third"]')
-const fourthEl = document.querySelector('[data-number="fourth"]')
-const fifthEl = document.querySelector('[data-number="fifth"]')
-const sixthEl = document.querySelector('[data-number="sixth"]')
-const seventhEl = document.querySelector('[data-number="seventh"]')
-const eigthtEl = document.querySelector('[data-number="eigtht"]')
-const ninthEl = document.querySelector('[data-number="ninth"]')
+box.addEventListener('click', onCellClick);
 
-box.addEventListener('click', onLinkClick);
-
-function onLinkClick(e) {
+function onCellClick(e) {
     e.preventDefault()
 
     if (e.target.nodeName !== 'LI') {
@@ -23,91 +22,153 @@ function onLinkClick(e) {
         alert('Выберите пустую ячейку');
         return;
     }
-    console.log(e.target)
     
     // cross
     if (move % 2 !== 0) {
-        e.target.firstElementChild.firstElementChild.classList.add('cross--visible');
+        e.target.classList.add('crossVisibility');
         e.target.id = 'cross';
     }
 
     // circle
     if (move % 2 === 0) {
-        e.target.firstElementChild.lastElementChild.classList.add('circle--visible');
+        e.target.classList.add('circleVisibility');
         e.target.id = 'circle';
     }
 
     move += 1;
 
-    if (firstEl.id === 'cross' && secondEl.id === 'cross' && thirdEl.id === 'cross') {
+    checkWin()
+    console.log(boxEl)
+}
+
+function checkWin() {
+    if (boxEl[0].id === 'cross' && boxEl[1].id === 'cross' && boxEl[2].id === 'cross') {
         alert('Победили крестики');
+        crossWinsAmount += 1;
+        crossWins.innerHTML = crossWinsAmount;
+        gameReset();
         return;
     }
-    if (firstEl.id === 'circle' && secondEl.id === 'circle' && thirdEl.id === 'circle') {
+    if (boxEl[0].id === 'circle' && boxEl[1].id === 'circle' && boxEl[2].id === 'circle') {
         alert('Победили нолики');
+        circleWinsAmount += 1;
+        circleWins.innerHTML = circleWinsAmount;
+        gameReset();
         return;
     }
 
-    if (fourthEl.id === 'cross' && fifthEl.id === 'cross' && sixthEl.id === 'cross') {
+    if (boxEl[3].id === 'cross' && boxEl[4].id === 'cross' && boxEl[5].id === 'cross') {
         alert('Победили крестики');
+        crossWinsAmount += 1;
+        crossWins.innerHTML = crossWinsAmount;
+        gameReset();
         return;
     }
-    if (fourthEl.id === 'circle' && fifthEl.id === 'circle' && sixthEl.id === 'circle') {
+    if (boxEl[3].id === 'circle' && boxEl[4].id === 'circle' && boxEl[5].id === 'circle') {
         alert('Победили нолики');
+        circleWinsAmount += 1;
+        circleWins.innerHTML = circleWinsAmount;
+        gameReset();
         return;
     }
 
-    if (seventhEl.id === 'cross' && eigthtEl.id === 'cross' && ninthEl.id === 'cross') {
+    if (boxEl[6].id === 'cross' && boxEl[7].id === 'cross' && boxEl[8].id === 'cross') {
         alert('Победили крестики');
+        crossWinsAmount += 1;
+        crossWins.innerHTML = crossWinsAmount;
+        gameReset();
         return;
     }
-    if (seventhEl.id === 'circle' && eigthtEl.id === 'circle' && ninthEl.id === 'circle') {
+    if (boxEl[6].id === 'circle' && boxEl[7].id === 'circle' && boxEl[8].id === 'circle') {
         alert('Победили нолики');
+        circleWinsAmount += 1;
+        circleWins.innerHTML = circleWinsAmount;
+        gameReset();
         return;
     }
 
-    if (firstEl.id === 'cross' && fourthEl.id === 'cross' && seventhEl.id === 'cross') {
+    if (boxEl[0].id === 'cross' && boxEl[3].id === 'cross' && boxEl[6].id === 'cross') {
         alert('Победили крестики');
+        crossWinsAmount += 1;
+        crossWins.innerHTML = crossWinsAmount;
+        gameReset();
         return;
     }
-    if (firstEl.id === 'circle' && fourthEl.id === 'circle' && seventhEl.id === 'circle') {
+    if (boxEl[0].id === 'circle' && boxEl[3].id === 'circle' && boxEl[6].id === 'circle') {
         alert('Победили нолики');
+        circleWinsAmount += 1;
+        circleWins.innerHTML = circleWinsAmount;
+        gameReset();
         return;
     }
 
-    if (secondEl.id === 'cross' && fifthEl.id === 'cross' && eigthtEl.id === 'cross') {
+    if (boxEl[1].id === 'cross' && boxEl[4].id === 'cross' && boxEl[7].id === 'cross') {
         alert('Победили крестики');
+        crossWinsAmount += 1;
+        crossWins.innerHTML = crossWinsAmount;
+        gameReset();
         return;
     }
-    if (secondEl.id === 'circle' && fifthEl.id === 'circle' && eigthtEl.id === 'circle') {
+    if (boxEl[1].id === 'circle' && boxEl[4].id === 'circle' && boxEl[7].id === 'circle') {
         alert('Победили нолики');
+        circleWinsAmount += 1;
+        circleWins.innerHTML = circleWinsAmount;
+        gameReset();
         return;
     }
 
-    if (thirdEl.id === 'cross' && sixthEl.id === 'cross' && ninthEl.id === 'cross') {
+    if (boxEl[2].id === 'cross' && boxEl[5].id === 'cross' && boxEl[8].id === 'cross') {
         alert('Победили крестики');
+        crossWinsAmount += 1;
+        crossWins.innerHTML = crossWinsAmount;
+        gameReset();
         return;
     }
-    if (thirdEl.id === 'circle' && sixthEl.id === 'circle' && ninthEl.id === 'circle') {
+    if (boxEl[2].id === 'circle' && boxEl[5].id === 'circle' && boxEl[8].id === 'circle') {
         alert('Победили нолики');
+        circleWinsAmount += 1;
+        circleWins.innerHTML = circleWinsAmount;
+        gameReset();
         return;
     }
 
-    if (firstEl.id === 'cross' && fifthEl.id === 'cross' && ninthEl.id === 'cross') {
+    if (boxEl[0].id === 'cross' && boxEl[4].id === 'cross' && boxEl[8].id === 'cross') {
         alert('Победили крестики');
+        crossWinsAmount += 1;
+        crossWins.innerHTML = crossWinsAmount;
+        gameReset();
         return;
     }
-    if (firstEl.id === 'circle' && fifthEl.id === 'circle' && ninthEl.id === 'circle') {
+    if (boxEl[0].id === 'circle' && boxEl[4].id === 'circle' && boxEl[8].id === 'circle') {
         alert('Победили нолики');
+        circleWinsAmount += 1;
+        circleWins.innerHTML = circleWinsAmount;
+        gameReset();
         return;
     }
 
-    if (thirdEl.id === 'cross' && fifthEl.id === 'cross' && seventhEl.id === 'cross') {
+    if (boxEl[2].id === 'cross' && boxEl[4].id === 'cross' && boxEl[6].id === 'cross') {
         alert('Победили крестики');
+        crossWinsAmount += 1;
+        crossWins.innerHTML = crossWinsAmount;
+        gameReset();
         return;
     }
-    if (thirdEl.id === 'circle' && fifthEl.id === 'circle' && seventhEl.id === 'circle') {
+    if (boxEl[2].id === 'circle' && boxEl[4].id === 'circle' && boxEl[6].id === 'circle') {
         alert('Победили нолики');
+        circleWinsAmount += 1;
+        circleWins.innerHTML = circleWinsAmount;
+        gameReset();
         return;
+    }
+}
+
+btnReset.addEventListener('click', gameReset);
+
+function gameReset() {
+    for (let i = 0; i < boxEl.length; i += 1) {
+        boxEl[i].id = ' ';
+        boxEl[i].classList.remove('crossVisibility')
+        boxEl[i].classList.remove('circleVisibility')
     }
 }

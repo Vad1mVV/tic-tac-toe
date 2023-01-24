@@ -1,3 +1,6 @@
+body {
+    background-color: rgb(148, 211, 211);
+}
 ul, li {
     margin: 0;
     padding: 0;
@@ -5,16 +8,41 @@ ul, li {
 li {
     list-style: none;
 }
+.counter {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+.counter div {
+    display: flex;
+    gap: 50px;
+}
+.counter__cross, .counter__circle {
+    font-size: 35px;
+}
+.counter__cross {
+    color: teal;
+}
+.counter__circle {
+    color: rgb(220, 255, 255);
+}
+.crossWinsAmount, .circleWinsAmount {
+    font-size: 40px;
+}
 .box {
     display: table;
-    margin: 100px auto 0;
+    margin: 30px auto 0;
 }
 .box__box {
     display: flex;
 }
 .box__el {
     position: relative;
-    border: 1px black solid;
+    border: 2px black solid;
+    border-radius: 7px;
+
+    margin: 3px;
+
     width: 150px;
     height: 150px;
 }
@@ -36,11 +64,16 @@ li {
     width: 150px;
     height: 150px;
 }
-.cross--visible {
+.crossVisibility .cross {
     z-index: 10;
-    fill: green;
+    fill: teal;
 }
-.circle--visible {
+.circleVisibility .circle {
     z-index: 10;
-    fill: red;
+    fill: rgb(220, 255, 255);
+}
+.btnReset {
+    padding: 5px 15px;
+    border: 1px black solid;
+    border-radius: 7px;
 }
